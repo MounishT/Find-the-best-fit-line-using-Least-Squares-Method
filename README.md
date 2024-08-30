@@ -1,4 +1,5 @@
 # Implementation of Univariate Linear Regression
+
 ## AIM:
 To implement univariate Linear Regression to fit a straight line using least squares.
 
@@ -6,47 +7,75 @@ To implement univariate Linear Regression to fit a straight line using least squ
 1. Hardware – PCs
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
-## Algorithm
-1. Get the independent variable X and dependent variable Y.
-2. Calculate the mean of the X -values and the mean of the Y -values.
-3. Find the slope m of the line of best fit using the formula. 
-<img width="231" alt="image" src="https://user-images.githubusercontent.com/93026020/192078527-b3b5ee3e-992f-46c4-865b-3b7ce4ac54ad.png">
-4. Compute the y -intercept of the line by using the formula:
+## Algorithm:
+
+1. Start 
+2. Get the independent variable X and dependent variable Y. 
+3. Calculate the mean of the X -values and the mean of the Y -values. 
+4. Find the slope m of the line of best fit using the formula.
+ <img width="231" alt="image" src="https://user-images.githubusercontent.com/93026020/192078527-b3b5ee3e-992f-46c4-865b-3b7ce4ac54ad.png">
+5. Compute the y -intercept of the line by using the formula:
 <img width="148" alt="image" src="https://user-images.githubusercontent.com/93026020/192078545-79d70b90-7e9d-4b85-9f8b-9d7548a4c5a4.png">
-5. Use the slope m and the y -intercept to form the equation of the line.
-6. Obtain the straight line equation Y=mX+b and plot the scatterplot.
+6. Use the slope m and the y -intercept to form the equation of the line.
+ 
+7. Obtain the straight line equation Y=mX+b and plot the scatterplot.
+8. End
+
 
 ## Program:
-python
-Program to implement univariate Linear Regression to fit a straight line using least squares.
-Developed by:T MOUNISH 
-RegisterNumber:212223240098  
 ```
+Program to implement univariate Linear Regression to fit a straight line using least squares.
+Developed by: JAYADEV PALLINTI
+RegisterNumber: 212223240058
+
 import numpy as np
 import matplotlib.pyplot as plt
-X=np.array(eval(input("Enter the input x values in array:")))
-Y=np.array(eval(input("Enter the input y values in array:")))
+
+#processing input data
+X=np.array(eval(input()))
+Y=np.array(eval(input()))
+
+#mean
 X_mean=np.mean(X)
 Y_mean=np.mean(Y)
-num=0
-denom=0
+
+num=0  #for slope
+denom=0  #for slope
+
+#to find sum of (xi-x') & (yi-y') & (xi-x')^2
 for i in range(len(X)):
     num+=(X[i]-X_mean)*(Y[i]-Y_mean)
     denom+=(X[i]-X_mean)**2
+
+#calculate slope
 m=num/denom
-print("The slope of the predicted line is : ",m)
-b=Y_mean - m*X_mean
-print("The y-intercept is :",b)
-Y_pred=m*X+b
-print("The 'y' predicted values are :",Y_pred)
-plt.scatter(X,Y,color='blue')
-plt.plot(X,Y_pred,color='green') 
+
+#calculate intercept
+b=Y_mean-m*X_mean
+
+print(m,b)
+
+#line equation
+Y_predicted=m*X+b
+print(Y_predicted)
+
+#to plot graph
+plt.scatter(X,Y)
+plt.plot(X,Y_predicted,color='red')
 plt.show()
 ```
 
 ## Output:
-![image](https://github.com/MounishT/Find-the-best-fit-line-using-Least-Squares-Method/assets/138955798/ad0f8a33-8a8c-496a-8710-6258930fa68d)
+## slope and y-intercept
+6.49131274131274 33.76833976833977
 
+## Y predicted
+[72.71621622 98.68146718 46.75096525 59.73359073 72.71621622 79.20752896
+ 33.76833977 40.25965251 85.6988417  66.22490347 53.24227799]
+
+## Graph:
+
+![Screenshot 2024-08-23 104618](https://github.com/user-attachments/assets/e9dae277-b45e-4496-a4e9-d5af51aa1586)
 
 
 
